@@ -5,8 +5,7 @@
 
 ## 사전 조건
 
-1. kubectl command 설치 된 환경에서 실행해야 합니다. (update_aws_auth.tf 확인)
-2. SPOT 처음 사용 하는 경우 필요
+SPOT 처음 사용 하는 경우 필요
 ```sh
 aws iam create-service-linked-role --aws-service-name spot.amazonaws.com || true
 ```
@@ -14,16 +13,6 @@ aws iam create-service-linked-role --aws-service-name spot.amazonaws.com || true
 ## 주의 사항
 - Karpenter를 삭제하면 Karpenter가 Provisioning한 Node가 NotReady 상태가 된다.
 - karpenter가 프로비저닝한 노드에 karpenter를 설치하면 안된다. 즉, karpenter는 노드그룹 노드에 설치해야한다.
-
-## Troubleshooting
-chart를 땡겨올 때 403 발생
-```
-could not download chart: pulling from host public.ecr.aws failed with status code [manifests v0.27.3]: 403 forbidden
-```
-해결방법
-```
-docker logout public.ecr.aws
-```
 
 ## Install / Uninstall by Terraform
 
